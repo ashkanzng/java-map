@@ -1,12 +1,35 @@
-# Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+## Getting Started
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Thymeleaf](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-spring-mvc-template-engines)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-developing-web-applications)
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
 
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* java -version
+  ```sh
+  openjdk version "14.0.2" 2020-07-14
+  openjdk version "13.0.2" 2020-01-14
+  openjdk version "8+"
+  ```
+
+### Installation
+
+2. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+3. Install NPM packages
+   ```sh
+   {
+	"name":"C",
+	"parentId": 2,
+	"stations": [
+			{"name":"Station C","latitude":40.182873 , "longitude" :44.499833}
+    ]
+    }
+   ```
+4. Enter your API in `config.js`
+   ```JS
+   const API_KEY = 'ENTER YOUR API';
