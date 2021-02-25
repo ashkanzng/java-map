@@ -6,12 +6,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * java -version
   ```sh
-  openjdk version "14.0.2" 2020-07-14
-  openjdk version "13.0.2" 2020-01-14
-  openjdk version "8+"
+  openjdk version 8+
   ```
 
 ### Installation
@@ -21,13 +18,11 @@ This is an example of how to list things you need to use the software and how to
    git clone https://github.com/your_username_/Project-Name.git
    ```
 3. Install NPM packages
-   ```sh
+   ```JS
    {
-	"name":"C",
-	"parentId": 2,
-	"stations": [
-			{"name":"Station C","latitude":40.182873 , "longitude" :44.499833}
-    ]
+	'name':'C',
+	'parentId': 2,
+	'stations': [{'name':'Station C','latitude':40.182873 , 'longitude' :44.499833}]
     }
    ```
 4. Enter your API in `config.js`
