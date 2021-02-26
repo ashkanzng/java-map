@@ -45,12 +45,9 @@ public class CompanyService {
     }
 
     public boolean delete(int id) {
-        Company existingCompany = companyRepository.findById(id).orElse(null);
-        if (existingCompany != null) {
-            companyRepository.delete(existingCompany);
-            return true;
-        }
-        return false;
+        Company existingCompany = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        companyRepository.delete(existingCompany);
+        return true;
     }
 
     // Get company with all the children stations in the tree
