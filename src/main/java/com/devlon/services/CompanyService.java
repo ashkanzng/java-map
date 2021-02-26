@@ -64,15 +64,11 @@ public class CompanyService {
     public CompanyT get(Integer id) {
         Company company = companyRepository.findById(id).orElse(null);
         if (company != null) {
-
             //Store id to prevent loop
             List<Integer> companyIdes = new ArrayList<>();
-
             Set<Station> stations = new HashSet<>(company.getStations());
-
             CompanyT companyTransactionObject = new CompanyT(company.getName());
             companyIdes.add(company.getId());
-
             findChild(company, companyTransactionObject, stations, companyIdes);
             companyTransactionObject.setStations(stations);
             return companyTransactionObject;
@@ -85,12 +81,10 @@ public class CompanyService {
         List<Company> children = companyRepository.findByParentId(company.getId());
         for (Company child : children) {
             if (!companyIdes.contains(child.getId())) {
-
                 companyIdes.add(child.getId());
                 stations.addAll(child.getStations());
                 CompanyT companyTChild = new CompanyT(child.getName());
                 companyTransactionObject.getChild().add(companyTChild);
-
                 findChild(child, companyTChild, stations, companyIdes);
             }
         }

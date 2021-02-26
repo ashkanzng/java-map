@@ -18,11 +18,6 @@ public class DevlonApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevlonApplication.class, args);
-		long jvmPid = ProcessHandle.current().pid();
-
-		System.out.println("---------------------  System is running on htt://localhost:8080  -------------------");
-		System.out.println("---------------------  Get all htt://localhost:8080/api/company/all  ---------------------");
-		System.out.println("---------------------  JVM process Id" + jvmPid +"  ---------------------------------------");
 	}
 
 }
