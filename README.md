@@ -33,7 +33,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
         "name":"Name Of Company",
         "parentId": 0, // or null
         "stations": [
-            {"name":"Station 1","latitude":41.692815 , "longitude" :44.874423}
+            {"name":"Station 1","latitude":41.692815 , "longitude" :44.874423},
             {"name":"Station 2","latitude":41.692815 , "longitude" :44.874423}
         ]
     }
