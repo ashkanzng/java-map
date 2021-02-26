@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="True Grit Abrasives,Sanding,Grinding"/>
+    <meta name="keywords" content="True Grit, Abrasives,Sanding,Grinding"/>
+    <title> Map Of Stations</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+
+<!--    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"-->
+<!--          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>-->
+<!--    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"-->
+<!--            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>-->
+
+</head>
+
+<body>
+    INDEX PAGE
+    <div class="map" style="width: 570px;height: 363px" id="mapid" onload="mapBox()" ></div>
+    <script th:inline="javascript">
+        function mapBox(){
+            let accessToken = 'pk.eyJ1IjoiYXNoa2Fuem5nIiwiYSI6ImNraW9oNHhmMTAzOWwyc3BhN291YjdqNGEifQ.sB8DV9z4s05yNNvidoRl9w';
+            mapboxgl.accessToken = accessToken;
+            var map = new mapboxgl.Map({
+                container: 'mapid',
+                // style: 'mapbox://styles/mapbox/streets-v11',
+                // style: 'mapbox://styles/mapbox/dark-v10',
+                // style: 'mapbox://styles/mapbox/outdoors-v11',
+                style: 'mapbox://styles/mapbox/navigation-preview-day-v4',
+                center: [44.4998,40.1828],
+                zoom: 12
+            });
+            map.addControl(new mapboxgl.NavigationControl());
+
+            var marker = new mapboxgl.Marker({color: 'red',scale:0.5})
+                .setLngLat([44.514777,40.170282])
+                .addTo(map);
+
+            var marker2 = new mapboxgl.Marker({color: 'blue',scale:0.5})
+                .setLngLat([44.487808,40.177299])
+                .addTo(map);
+
+            new mapboxgl.Marker({color: 'green',scale:0.5})
+                .setLngLat([44.518041,40.186021])
+                .addTo(map);
+
+            new mapboxgl.Marker({color: 'red',scale:0.5})
+                .setLngLat([44.521475,40.181234])
+                .setPopup(new mapboxgl.Popup()
+                    .setText('Hello   '))
+                .addTo(map);
+        }
+        mapBox();
+    </script>
+</body>
+</html>

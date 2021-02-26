@@ -18,10 +18,11 @@ The task is to implement Rest-API for the electric vehicle charging station mana
    ```sh
    git clone https://github.com/ashkanzng/virta-task.git
    ```
-<!-- ABOUT THE PROJECT -->
-## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://ashkan.pro/statics/img-1.jpg)
+### About The Project
+
+![Screen Shot](https://ashkan.pro/statics/img-1.jp "Screen Shot")
+
 
 ### Task 1
 
@@ -51,3 +52,8 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 4. Enter your API in `config.js`
    ```Java
    String name = "asas";
+
+### Usage
+
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+
