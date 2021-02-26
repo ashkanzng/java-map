@@ -5,14 +5,9 @@ import com.devlon.models.Station;
 import com.devlon.repositories.CompanyRepository;
 import com.devlon.repositories.StationRepository;
 import com.devlon.transactionObjects.CompanyT;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.*;
 
@@ -39,15 +34,13 @@ public class CompanyService {
 
     @Transactional
     public Company update(int id, Company company) {
-        Company existingCompany = companyRepository.findById(id).orElse(null);
-        if (existingCompany != null) {
-            if (company.getStations() != null && company.getStations().size() > 0) {
-                stationRepository.deleteAll(existingCompany.getStations());
-            }
-            company.setCurrentId(existingCompany.getId());
-            company.setCreated_at(existingCompany.getCreated_at());
-            companyRepository.save(company);
+        Company existingCompany = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        if (company.getStations() != null && company.getStations().size() > 0) {
+            stationRepository.deleteAll(existingCompany.getStations());
         }
+        company.setCurrentId(existingCompany.getId());
+        company.setCreated_at(existingCompany.getCreated_at());
+        companyRepository.save(company);
         return existingCompany;
     }
 
@@ -60,23 +53,20 @@ public class CompanyService {
         return false;
     }
 
-    // Get chain of company include its child
+    // Get company with all the children stations in the tree
     public CompanyT get(Integer id) {
-        Company company = companyRepository.findById(id).orElse(null);
-        if (company != null) {
-            //Store id to prevent loop
-            List<Integer> companyIdes = new ArrayList<>();
-            Set<Station> stations = new HashSet<>(company.getStations());
-            CompanyT companyTransactionObject = new CompanyT(company.getName());
-            companyIdes.add(company.getId());
-            findChild(company, companyTransactionObject, stations, companyIdes);
-            companyTransactionObject.setStations(stations);
-            return companyTransactionObject;
-        }
-        return null;
+        Company company = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        //Store id to prevent loop
+        List<Integer> companyIdes = new ArrayList<>();
+        Set<Station> stations = new HashSet<>(company.getStations());
+        CompanyT companyTransactionObject = new CompanyT(company.getName());
+        companyIdes.add(company.getId());
+        findChild(company, companyTransactionObject, stations, companyIdes);
+        companyTransactionObject.setStations(stations);
+        return companyTransactionObject;
     }
 
-    // Recursive to find all child companies
+    // Recursive function to find all children of companies
     void findChild(Company company, CompanyT companyTransactionObject, Set<Station> stations, List<Integer> companyIdes) {
         List<Company> children = companyRepository.findByParentId(company.getId());
         for (Company child : children) {
@@ -84,6 +74,7 @@ public class CompanyService {
                 companyIdes.add(child.getId());
                 stations.addAll(child.getStations());
                 CompanyT companyTChild = new CompanyT(child.getName());
+                companyTChild.setStations(child.getStations());
                 companyTransactionObject.getChild().add(companyTChild);
                 findChild(child, companyTChild, stations, companyIdes);
             }
