@@ -7,10 +7,6 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 * java 8+
 * Apache Maven 3+
-  ```sh
-  mvn --version
-  java --version
-  ```
 
 ### Installation  
 
@@ -24,26 +20,44 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ![Screen Shot](https://ashkan.pro/statics/img-1.jp "Screen Shot")
 
 
-### Task 1
+### CRUD Api Usage.
 
-###### CRUD Api support stations and companies.
-
-- Creating company with stations 
+- Create company with stations
 ```JS
     request
 
     POST http://localhost:8080/api/company/add
     Content-Type:application/json
     Accept:application/json
-   {
-    'name':'Company A',
-    'parentId': null,
-    'stations': [
-        {'name':'Station C','latitude':40.182873 , 'longitude' :44.499833}
+    {
+        "name":"Name Of Company",
+        "parentId": 0, // or null
+        "stations": [
+            {"name":"Station 1","latitude":41.692815 , "longitude" :44.874423}
+            {"name":"Station 2","latitude":41.692815 , "longitude" :44.874423}
         ]
     }
 ```
+- Update company with stations
+```JS
+    request
 
+    POST http://localhost:8080/api/company/update/{company_id}
+    Content-Type:application/json
+    Accept:application/json
+    {
+        "name":"New Name Of Company",
+        "parentId": 2, // or null
+        "stations": [
+            {"name":"Station 3","latitude":41.692815 , "longitude" :44.874423},
+            {"name":"Station 4","latitude":41.692815 , "longitude" :44.874423}
+        ]
+    }
+```
+    
+    
+    
+### Task 1
 
 ### Task 2
 
