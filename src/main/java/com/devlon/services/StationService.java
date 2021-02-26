@@ -28,6 +28,15 @@ public class StationService {
         return stationRepository.save(station);
     }
 
+    public Station update(int stationId, Station station){
+        Station existingStation = stationRepository.findById(stationId).orElseThrow(()-> new EntityNotFoundException("Station not found"));
+        station.setStationId(existingStation.getId());
+        station.setCreated_at(existingStation.getCreated_at());
+        station.setCompany(existingStation.getCompany());
+        stationRepository.save(station);
+        return station;
+    }
+
     public boolean delete(int id) {
         Station existingStation = stationRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
         stationRepository.delete(existingStation);
