@@ -10,7 +10,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
     - [Create Company](#create-a-new-company)
     - [Get Company](#get-company)
     - [Get list of Companies](#Get-list-of-Companies)
-    - [Find a Company](#Find a Company)
+    - [Find a Company](#Find-a-Company)
     - [Update Company](#update-company)
     - [Delete Company](#delete-company)
 
