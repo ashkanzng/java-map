@@ -2,6 +2,9 @@ package com.devlon.controllers;
 
 import com.devlon.models.Station;
 import com.devlon.services.StationService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,14 +57,22 @@ public class StationController {
         }
     }
 
-    @GetMapping(value = "/nearest_stations")
-    public void nearestStation(@RequestParam(name = "lat") double lat, @RequestParam(name = "lon") double lon, @RequestParam(name = "rad") int rad) {
+    @GetMapping(value = "/find")
+    public ResponseEntity nearestStation(@RequestParam(name = "lat") double lat, @RequestParam(name = "lon") double lon, @RequestParam(name = "rad") double rad) {
 
-        int R = 6_371;
-        stationService.findClosestStations(lat, lon, rad).forEach(station -> {
-            double dis = Math.acos(Math.sin(Math.toRadians(station.getLatitude())) * Math.sin(Math.toRadians(lat)) + Math.cos(Math.toRadians(station.getLatitude())) * Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(station.getLongitude()) - Math.toRadians(lon))) * R;
-            System.out.println(station.getName() + " " + dis);
-        });
+//        int R = 6_371;
+//        stationService.findClosestStations(lat, lon, rad).forEach(station -> {
+//            double dis = Math.acos(Math.sin(Math.toRadians(station.getLatitude())) * Math.sin(Math.toRadians(lat)) + Math.cos(Math.toRadians(station.getLatitude())) * Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(station.getLongitude()) - Math.toRadians(lon))) * R;
+//            System.out.println(station.getName() + " " + dis);
+//        });
+        try{
+            ObjectMapper mapper = new ObjectMapper();
+            List<String> stations = stationService.findClosestStations(lat,lon,rad);
+            JsonNode result = mapper.readValue(stations.toString(), JsonNode.class);
+            return ResponseEntity.ok(result);
+        }catch (JsonProcessingException jsonProcessingException){
+            return ResponseEntity.badRequest().body(jsonProcessingException.getMessage());
+        }
     }
 
 }

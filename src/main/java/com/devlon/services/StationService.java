@@ -45,8 +45,7 @@ public class StationService {
         return true;
     }
 
-    public List<Station> findClosestStations(double lat, double lon, int rad){
-        System.out.println(stationRepository.findAllStationsOrderByDistance(lat,lon));
-        return stationRepository.findAll();
+    public List<String> findClosestStations(double lat, double lon, double rad){
+        return stationRepository.findAllStationsOrderByDistance(lat,lon,rad);
     }
 }

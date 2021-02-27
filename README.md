@@ -6,7 +6,6 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ### Requirement
 
 * java 8+
-* Apache Maven 3+
 
 ### Installation  
 
@@ -46,6 +45,22 @@ The task is to implement Rest-API for the electric vehicle charging station mana
     
     
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Task 1
 
 ### Task 2
