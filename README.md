@@ -5,10 +5,10 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 # Crossref REST API
 
 - Crossref REST API
-    - [Requirement](#Requirement)
-    - [Create Company](#preamble)
-    - [Create Company](#preamble)
-    - [Update Company](#meta)
+    - [Requirement](#requirement)
+    - [Installation](#installation)
+    - [Create Company](#create-company)
+    - [Update Company](#update-company)
     - [Delete Company](#meta)
     - [Get Company](#meta)
 
@@ -34,10 +34,8 @@ The task is to implement Rest-API for the electric vehicle charging station mana
    ```
 
 
-### CRUD Api Usage.
- 
+### Create Company.
 
-- Create company with stations
 ```JS
     request
 
@@ -46,7 +44,8 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 
 ```
-- Update company with stations
+
+### Update Company.
 ```JS
     request
 
@@ -55,7 +54,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
     
 ```
     
-    
+### Delete Company.
     
 
 
