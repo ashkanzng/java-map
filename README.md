@@ -33,7 +33,10 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 ```JS
     Request
+    curl --request POST --url http://localhost:8080/api/company/add --header 'Content-Type: application/json' --data '{"name":"Company A","parentId": null,"stations": [{"name":"Station A1","latitude":40.18490133093378 , "longitude" :44.51706974521536},{"name":"Station A2","latitude":40.18211902611194 , "longitude" :44.521060034562424}]}'
 
+    or 
+    
     POST http://localhost:8080/api/company/add
     Content-Type:application/json
     {
@@ -44,6 +47,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
             {"name":"Station A2","latitude":40.18211902611194 , "longitude" :44.521060034562424}
           ]
     }
+
 ```
 ```JS
     Response
