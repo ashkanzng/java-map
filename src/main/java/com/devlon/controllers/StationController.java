@@ -57,11 +57,9 @@ public class StationController {
     public void nearestStation(@RequestParam(name = "lat") double lat,@RequestParam(name = "lon") double lon , @RequestParam(name = "rad") int rad){
 
         int R = 6_371;
-//        double dis = Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2)) * R;
         stationService.findClosestStations(lat, lon, rad).forEach(station -> {
             double dis = Math.acos(Math.sin(Math.toRadians(station.getLatitude())) * Math.sin(Math.toRadians(lat)) + Math.cos(Math.toRadians(station.getLatitude())) * Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(station.getLongitude()) - Math.toRadians(lon))) * R;
             System.out.println(station.getName() + " " + dis);
-
         });
     }
 

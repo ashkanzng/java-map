@@ -18,5 +18,4 @@ public interface StationRepository extends JpaRepository<Station,Integer> {
             @Param("lat") Double lat,
             @Param("lon") Double lon
             );
-
 }
