@@ -8,9 +8,9 @@ The task is to implement Rest-API for the electric vehicle charging station mana
     - [Requirement](#requirement)
     - [Installation](#installation)
     - [Create Company](#create-company)
+    - [Get Company](#get-company)
     - [Update Company](#update-company)
-    - [Delete Company](#meta)
-    - [Get Company](#meta)
+    - [Delete Company](#delete-company)
 
 
 ### Requirement
@@ -33,8 +33,50 @@ The task is to implement Rest-API for the electric vehicle charging station mana
         java -jar xxx.jar
    ```
 
-
 ### Create Company.
+
+```JS
+    request
+
+    POST http://localhost:8080/api/company/add
+    Content-Type:application/json
+    {
+      "name":"Company A",
+            "parentId": null,
+            "stations": [
+            {"name":"Station A1","latitude":40.18490133093378 , "longitude" :44.51706974521536},
+            {"name":"Station A2","latitude":40.18211902611194 , "longitude" :44.521060034562424}
+          ]
+    }
+
+    response
+
+    {
+      "id": 1,
+      "name": "Company A",
+      "parentId": null,
+      "stations": [
+              {
+                "id": 1,
+                "name": "Station A1",
+                "latitude": 40.18490133093378,
+                "longitude": 44.51706974521536,
+                "companyName": "Company A"
+              },
+              {
+                "id": 2,
+                "name": "Station A2",
+                "latitude": 40.18211902611194,
+                "longitude": 44.521060034562424,
+                "companyName": "Company A"
+              }
+            ],
+    "created_at": "2021-02-27T21:50:23.682+00:00",
+    "updated_at": "2021-02-27T21:50:23.682+00:00"
+    }
+
+```
+### Get Company.
 
 ```JS
     request
@@ -55,19 +97,13 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ```
     
 ### Delete Company.
+
+```JS
+    request
+
+    POST http://localhost:8080/api/company/update/{company_id}
+    Content-Type:application/json
     
+```
 
-
-
-### Task 2
-
-###### Implement endpoint which gets all stations.
-
-4. Enter your API in `config.js`
-   ```Java
-   String name = "asas";
-
-### Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
