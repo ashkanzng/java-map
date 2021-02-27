@@ -64,34 +64,121 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ```
 
 
-### Get Company.
+### Get Company Including all the children stations in the tree, for the given *company_id* .
+
+#### Request
+`GET /api/company/get/{company_id}`
+
+    curl --request GET --url http://localhost:8080/api/company/get/1 --header 'Content-Type: application/json'
+
+#### Response
 
 ```JS
-    request
-
-    POST http://localhost:8080/api/company/add
-    Content-Type:application/json
-
-
+{
+  "name": "Company A",
+  "child": [
+    {
+      "name": "Company B",
+      "child": [
+        {
+          "name": "Company C",
+          "child": [],
+          "stations": [
+            {
+              "id": 6,
+              "name": "Station C2",
+              "latitude": 40.176787750697,
+              "longitude": 44.506651828385,
+              "companyName": "Company C"
+            },
+            {
+              "id": 5,
+              "name": "Station C1",
+              "latitude": 40.179553515829,
+              "longitude": 44.50602072514,
+              "companyName": "Company C"
+            }
+          ]
+        }
+      ],
+      "stations": [
+        {
+          "id": 4,
+          "name": "Station B2",
+          "latitude": 40.182009857438,
+          "longitude": 44.506056447965,
+          "companyName": "Company B"
+        },
+        {
+          "id": 3,
+          "name": "Station B1",
+          "latitude": 40.185102901848,
+          "longitude": 44.509402485928,
+          "companyName": "Company B"
+        }
+      ]
+    }
+  ],
+  "stations": [
+    {
+      "id": 6,
+      "name": "Station C2",
+      "latitude": 40.176787750697,
+      "longitude": 44.506651828385,
+      "companyName": "Company C"
+    },
+    {
+      "id": 2,
+      "name": "Station A2",
+      "latitude": 40.182119026112,
+      "longitude": 44.521060034562,
+      "companyName": "Company A"
+    },
+    {
+      "id": 1,
+      "name": "Station A1",
+      "latitude": 40.184901330934,
+      "longitude": 44.517069745215,
+      "companyName": "Company A"
+    },
+    {
+      "id": 4,
+      "name": "Station B2",
+      "latitude": 40.182009857438,
+      "longitude": 44.506056447965,
+      "companyName": "Company B"
+    },
+    {
+      "id": 5,
+      "name": "Station C1",
+      "latitude": 40.179553515829,
+      "longitude": 44.50602072514,
+      "companyName": "Company C"
+    },
+    {
+      "id": 3,
+      "name": "Station B1",
+      "latitude": 40.185102901848,
+      "longitude": 44.509402485928,
+      "companyName": "Company B"
+    }
+  ]
+}
 ```
+
 
 ### Update Company.
-```JS
-    request
 
-    POST http://localhost:8080/api/company/update/{company_id}
-    Content-Type:application/json
-    
-```
-    
-### Delete Company.
+#### Request
 
-```JS
-    request
+  `POST /api/company/update/{company_id}`
 
-    POST http://localhost:8080/api/company/update/{company_id}
-    Content-Type:application/json
+#### Response
     
-```
+### Delete a Company.
+
+#### Request
+
+#### Response
 
 
