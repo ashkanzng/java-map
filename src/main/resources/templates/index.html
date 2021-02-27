@@ -3,27 +3,27 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns="http://www.w3.org/1999/xhtml">
-<head th:fragment="head">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="True Grit Abrasives,Sanding,Grinding"/>
-    <meta name="keywords" content="True Grit, Abrasives,Sanding,Grinding"/>
-    <title> Map Of Stations</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <style type="text/css">
-        .container {
-            padding:20px;
-            margin: 10px;
-            max-width: 90vw;
-        }
-        .btn-success{
-            margin-top: 10px;
-        }
-    </style>
-</head>
+    <head th:fragment="head">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="True Grit Abrasives,Sanding,Grinding"/>
+        <meta name="keywords" content="True Grit, Abrasives,Sanding,Grinding"/>
+        <title> Map Of Stations</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+        <style type="text/css">
+            .container {
+                padding:20px;
+                margin: 10px;
+                max-width: 90vw;
+            }
+            .btn-success{
+                margin-top: 10px;
+            }
+        </style>
+    </head>
 <body>
 
     <div class="container">
@@ -58,8 +58,7 @@
                 // style: 'mapbox://styles/mapbox/dark-v10',
                 // style: 'mapbox://styles/mapbox/outdoors-v11',
                 // style: 'mapbox://styles/mapbox/navigation-preview-day-v4',
-                // center: [44.51322733748676,40.177935945724705],
-                center: [51.307427406670925,35.74478174133834],
+                center: [44.51322733748676,40.177935945724705],
                 zoom: 12
             });
             map.addControl(new mapboxgl.NavigationControl());
@@ -82,12 +81,6 @@
         function getLatLon(){
             map.on('click', function (e) {
                 console.log(e.lngLat)
-                // document.getElementById('info').innerHTML =
-                //
-                //     JSON.stringify(e.point) +
-                //     '<br />' +
-                //
-                //     JSON.stringify(e.lngLat.wrap());
             });
         }
 
