@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -22,39 +23,39 @@ public class StationController {
     StationService stationService;
 
     @GetMapping("/all")
-    public List<Station> all(){
+    public List<Station> all() {
         return stationService.findAll();
     }
 
     @PostMapping("/add/{company_id}")
-    public ResponseEntity add(@PathVariable Integer company_id,@RequestBody Station station){
-        try{
-            return ResponseEntity.ok().body(stationService.add(company_id,station));
-        }catch (EntityNotFoundException entityNotFoundException){
+    public ResponseEntity add(@PathVariable Integer company_id, @RequestBody Station station) {
+        try {
+            return ResponseEntity.ok().body(stationService.add(company_id, station));
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(entityNotFoundException.getMessage());
         }
     }
 
     @PostMapping("/update/{station_id}")
-    public ResponseEntity update(@PathVariable Integer station_id,@RequestBody Station station){
-        try{
-            return ResponseEntity.ok(stationService.update(station_id,station));
-        }catch (EntityNotFoundException entityNotFoundException){
+    public ResponseEntity update(@PathVariable Integer station_id, @RequestBody Station station) {
+        try {
+            return ResponseEntity.ok(stationService.update(station_id, station));
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(entityNotFoundException.getMessage());
         }
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity removeStation(@PathVariable Integer id) {
-        try{
+        try {
             return ResponseEntity.ok().body(stationService.delete(id));
-        }catch (EntityNotFoundException entityNotFoundException){
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
 
     @GetMapping(value = "/nearest_stations")
-    public void nearestStation(@RequestParam(name = "lat") double lat,@RequestParam(name = "lon") double lon , @RequestParam(name = "rad") int rad){
+    public void nearestStation(@RequestParam(name = "lat") double lat, @RequestParam(name = "lon") double lon, @RequestParam(name = "rad") int rad) {
 
         int R = 6_371;
         stationService.findClosestStations(lat, lon, rad).forEach(station -> {
@@ -62,6 +63,5 @@ public class StationController {
             System.out.println(station.getName() + " " + dis);
         });
     }
-
 
 }

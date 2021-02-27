@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.*;
@@ -37,7 +38,7 @@ public class CompanyService {
 
     @Transactional
     public Company update(int id, Company company) {
-        Company existingCompany = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        Company existingCompany = companyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Company not found"));
         if (company.getStations() != null && company.getStations().size() > 0) {
             stationRepository.deleteAll(existingCompany.getStations());
             existingCompany.setStations(company.getStations());
@@ -49,14 +50,14 @@ public class CompanyService {
     }
 
     public boolean delete(int id) {
-        Company existingCompany = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        Company existingCompany = companyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Company not found"));
         companyRepository.delete(existingCompany);
         return true;
     }
 
     // Get company with all the children stations in the tree
     public CompanyT get(Integer id) {
-        Company company = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
+        Company company = companyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Company not found"));
         //Store id to prevent loop
         List<Integer> companyIdes = new ArrayList<>();
         Set<Station> stations = new HashSet<>(company.getStations());

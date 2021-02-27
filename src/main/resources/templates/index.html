@@ -1,20 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="True Grit Abrasives,Sanding,Grinding"/>
     <meta name="keywords" content="True Grit, Abrasives,Sanding,Grinding"/>
     <title> Map Of Stations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
 
+    <style type="text/css">
+        .container {
+            padding:20px;
+            margin: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    INDEX PAGE
-    <div class="map" style="width: 800px;height: 500px" id="mapid" onload="mapBox()" ></div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9"><div class="map" style="width: 100%;height: 600px" id="mapid" onload="mapBox()" ></div></div>
+            <div class="col-lg-3">
+                <form action="/api/station/nearest_stations" method="get">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Lat / Long </span>
+                        </div>
+                        <input type="text" name="lat" class="form-control" placeholder="35.75688....">
+                        <input type="text" name="lon" class="form-control" placeholder="51.28217....">
+                        <input type="text" name="rad" class="form-control" placeholder="5">
+                    </div>
+                    <b>
+                    <button type="submit" class="btn btn-success">Find Nearest Stations</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <script th:inline="javascript">
         var map;
         function mapBox(){
@@ -40,14 +73,28 @@
                     data.forEach(station =>{
                         new mapboxgl.Marker({color: 'red',scale:0.5})
                             .setLngLat([station.longitude,station.latitude])
-                            .setPopup(new mapboxgl.Popup()
-                                .setText(' ' + station.name + '  ' ))
+                            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                                .setHTML('<b><b><h5>' + station.name + '</h5><p> Company:' + station.companyName + '</p>'))
                             .addTo(map);
                     })
                 })
         }
+
+        function getLatLon(){
+            map.on('click', function (e) {
+                console.log(e.lngLat)
+                // document.getElementById('info').innerHTML =
+                //
+                //     JSON.stringify(e.point) +
+                //     '<br />' +
+                //
+                //     JSON.stringify(e.lngLat.wrap());
+            });
+        }
+
         mapBox();
         addMarker();
+        getLatLon();
     </script>
 </body>
 </html>

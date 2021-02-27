@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -32,9 +33,9 @@ public class CompanyController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable Integer id) {
-        try{
+        try {
             return ResponseEntity.ok(companyService.get(id));
-        }catch (EntityNotFoundException entityNotFoundException){
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(entityNotFoundException.getMessage());
         }
     }
@@ -46,18 +47,18 @@ public class CompanyController {
 
     @PostMapping(value = "/update/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity updateCompany(@PathVariable Integer id, @RequestBody Company company) {
-        try{
+        try {
             return ResponseEntity.ok().body(companyService.update(id, company));
-        }catch (EntityNotFoundException entityNotFoundException){
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(entityNotFoundException.getMessage());
         }
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity removeCompany(@PathVariable Integer id) {
-        try{
+        try {
             return ResponseEntity.ok(companyService.delete(id));
-        }catch (EntityNotFoundException entityNotFoundException){
+        } catch (EntityNotFoundException entityNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(false);
         }
     }
