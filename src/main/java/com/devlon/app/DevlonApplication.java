@@ -15,9 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableCaching
 @SpringBootApplication
 public class DevlonApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(DevlonApplication.class, args);
 	}
-
 }

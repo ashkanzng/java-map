@@ -1,10 +1,7 @@
-
-## Getting Started
-
+## Task Description
 The task is to implement Rest-API for the electric vehicle charging station management system.
 
 ### Requirement
-
 * java 8+
 
 ### Installation  

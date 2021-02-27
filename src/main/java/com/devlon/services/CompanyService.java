@@ -7,6 +7,7 @@ import com.devlon.repositories.StationRepository;
 import com.devlon.transactionObjects.CompanyT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.*;
@@ -51,7 +52,7 @@ public class CompanyService {
         return true;
     }
 
-    // Get company with all the children stations in the tree
+    // Get company with all the children and stations in the tree object
     public CompanyT get(Integer id) {
         Company company = companyRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Company not found"));
         //Store id to prevent loop

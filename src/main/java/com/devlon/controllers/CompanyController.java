@@ -31,7 +31,7 @@ public class CompanyController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity get(@PathVariable Integer id) {
+    public ResponseEntity<Object> get(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(companyService.get(id));
         } catch (EntityNotFoundException entityNotFoundException) {
@@ -45,7 +45,7 @@ public class CompanyController {
     }
 
     @PostMapping(value = "/update/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity updateCompany(@PathVariable Integer id, @RequestBody Company company) {
+    public ResponseEntity<Object> updateCompany(@PathVariable Integer id, @RequestBody Company company) {
         try {
             return ResponseEntity.ok().body(companyService.update(id, company));
         } catch (EntityNotFoundException entityNotFoundException) {
@@ -54,7 +54,7 @@ public class CompanyController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity removeCompany(@PathVariable Integer id) {
+    public ResponseEntity<Object> removeCompany(@PathVariable Integer id) {
         try {
             return ResponseEntity.ok(companyService.delete(id));
         } catch (EntityNotFoundException entityNotFoundException) {
