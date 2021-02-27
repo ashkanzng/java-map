@@ -4,7 +4,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 ## Crossref REST API
 
-- Crossref REST API
+- Company API
     - [Requirement](#requirement)
     - [Installation](#install)
     - [Create Company](#create-a-new-company)
@@ -13,7 +13,11 @@ The task is to implement Rest-API for the electric vehicle charging station mana
     - [Find a Company](#Find-a-Company)
     - [Update Company](#update-company)
     - [Delete Company](#delete-company)
-
+- Station API
+    - [Add Station](#add-station)
+    - [Get list of Stations](#Get-list-of-stations)
+    - [Update Station](#update-station)
+    - [Delete Station](#delete-station)
 
 ### Requirement
     java 8+
@@ -213,4 +217,35 @@ Including all the children stations in the tree, for the given *company_id* .
     curl --request DELETE   --url http://localhost:8080/api/company/delete/3
 
 
+### Add Station
+
+#### Request
+`POST /api/station/add/{company_id}`
+
+    curl --request POST  --url http://localhost:8080/api/station/add/2 --header 'Content-Type: application/json' --data '{"name":"Station B2","latitude": 40.173548750850095,"longitude":44.50900953485069}'
+
+#### Response
+```JS
+{
+  "id": 161,
+  "name": "Station D 6",
+  "latitude": 40.17949170829966,
+  "longitude": 44.51391698378367,
+  "companyName": "D"
+}
+```
+
+### Get list of stations
+
+#### Request
+`GET /api/station/all`
+
+### Update Station
+
+#### Request
+
+
+### Delete Station
+
+#### Request
 
