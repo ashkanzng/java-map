@@ -14,13 +14,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        System.out.println("handleTypeMismatch");
-        return super.handleTypeMismatch(ex, headers, status, request);
+        return ResponseEntity.badRequest().body( ex.getMessage());
     }
 
     @Override
     protected ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        System.out.println("handleMissingServletRequestParameter");
-        return super.handleMissingServletRequestParameter(ex, headers, status, request);
+        return ResponseEntity.badRequest().body( ex.getParameterName() + " is missing");
     }
 }
