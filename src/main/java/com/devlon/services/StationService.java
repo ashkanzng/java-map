@@ -6,6 +6,8 @@ import com.devlon.repositories.CompanyRepository;
 import com.devlon.repositories.StationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
@@ -41,5 +43,10 @@ public class StationService {
         Station existingStation = stationRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
         stationRepository.delete(existingStation);
         return true;
+    }
+
+    public List<Station> findClosestStations(double lat, double lon, int rad){
+        System.out.println(stationRepository.findAllStationsOrderByDistance(lat,lon));
+        return stationRepository.findAll();
     }
 }

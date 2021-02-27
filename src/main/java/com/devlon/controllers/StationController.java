@@ -54,13 +54,16 @@ public class StationController {
     }
 
     @GetMapping(value = "/nearest_stations")
-//    public void nearestStation(@PathVariable double lat,@PathVariable double lon , @PathVariable int rad){
-    public void nearestStation(){
-        double lat1 = 35.746599274497235 , lon1 = 51.30860423202725,
-                lat2 = 35.7431074438013 , lon2 = 51.30782639141293;
-        int R = 6_371;
+    public void nearestStation(@RequestParam(name = "lat") double lat,@RequestParam(name = "lon") double lon , @RequestParam(name = "rad") int rad){
 
-        double dis = Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2)) * R;
-        System.out.println(dis);
+        int R = 6_371;
+//        double dis = Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2)) * R;
+        stationService.findClosestStations(lat, lon, rad).forEach(station -> {
+            double dis = Math.acos(Math.sin(Math.toRadians(station.getLatitude())) * Math.sin(Math.toRadians(lat)) + Math.cos(Math.toRadians(station.getLatitude())) * Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(station.getLongitude()) - Math.toRadians(lon))) * R;
+            System.out.println(station.getName() + " " + dis);
+
+        });
     }
+
+
 }
