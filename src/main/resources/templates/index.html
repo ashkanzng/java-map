@@ -13,35 +13,34 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-
     <style type="text/css">
         .container {
             padding:20px;
             margin: 10px;
+            max-width: 90vw;
+        }
+        .btn-success{
+            margin-top: 10px;
         }
     </style>
 </head>
-
 <body>
-
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-9"><div class="map" style="width: 100%;height: 600px" id="mapid" onload="mapBox()" ></div></div>
-            <div class="col-lg-3">
+            <div class="col-lg-8"><div class="map" style="width: 100%;height: 600px" id="mapid" onload="mapBox()" ></div></div>
+            <div class="col-lg-4">
                 <form action="/api/station/nearest_stations" method="get">
-
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Lat / Long </span>
+                            <span class="input-group-text" id="">Lat / Long / Raduis</span>
                         </div>
                         <input type="text" name="lat" class="form-control" placeholder="35.75688....">
                         <input type="text" name="lon" class="form-control" placeholder="51.28217....">
                         <input type="text" name="rad" class="form-control" placeholder="5">
                     </div>
-                    <b>
+                    <b/>
                     <button type="submit" class="btn btn-success">Find Nearest Stations</button>
-
                 </form>
             </div>
         </div>

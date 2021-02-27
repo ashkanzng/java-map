@@ -10,14 +10,18 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 ### Installation  
 
-* Clone the repo
+#### Option 1
+- Clone the repo
    ```sh
-   git clone https://github.com/ashkanzng/virta-task.git
+        git clone https://github.com/ashkanzng/virta-task.git
+        cd virta-task
+        mvn spring-boot:run
    ```
-
-### About The Project
-
-![Screen Shot](https://ashkan.pro/statics/img-1.jp "Screen Shot")
+#### Option 2
+- Download jar file and run it
+   ```sh
+        java -jar xxx.jar
+   ```
 
 
 ### CRUD Api Usage.
@@ -28,15 +32,8 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
     POST http://localhost:8080/api/company/add
     Content-Type:application/json
-    Accept:application/json
-    {
-        "name":"Name Of Company",
-        "parentId": 0, // or null
-        "stations": [
-            {"name":"Station 1","latitude":41.692815 , "longitude" :44.874423},
-            {"name":"Station 2","latitude":41.692815 , "longitude" :44.874423}
-        ]
-    }
+
+
 ```
 - Update company with stations
 ```JS
@@ -44,15 +41,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
     POST http://localhost:8080/api/company/update/{company_id}
     Content-Type:application/json
-    Accept:application/json
-    {
-        "name":"New Name Of Company",
-        "parentId": 2, // or null
-        "stations": [
-            {"name":"Station 3","latitude":41.692815 , "longitude" :44.874423},
-            {"name":"Station 4","latitude":41.692815 , "longitude" :44.874423}
-        ]
-    }
+    
 ```
     
     
