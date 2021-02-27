@@ -19,12 +19,14 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ### Install
 
     Option 1
+
         1. git clone https://github.com/ashkanzng/virta-task.git
         2. cd virta-task
         3. mvn spring-boot:run
         4. open browser to http://localhost:8080
 
     Option 2 
+
         1. Download jar file and run the app
         2. java -jar xxx.jar
 
@@ -173,8 +175,16 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
   `POST /api/company/update/{company_id}`
 
+      curl --request POST --url http://localhost:8080/api/company/update/3 --header 'Content-Type: application/json' --data '{"name": "Company C ","parentId":2}'
+
+      (you can also add or remove stations)
+      curl --request POST --url http://localhost:8080/api/company/update/3 --header 'Content-Type: application/json' --data '{"name": "Company C","parentId":2,"stations": [{"name": "Station C1","latitude": 40.179553515829,"longitude": 44.50602072514},{"name": "Station C2","latitude": 40.176787750697,"longitude": 44.506651828385},{"name": "Station C23","latitude": 40.173548750850095,"longitude": 44.50640176860866}]}'
+
+
 #### Response
     
+
+
 ### Delete a Company.
 
 #### Request
