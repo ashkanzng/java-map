@@ -12,7 +12,6 @@ public class DbInitializer implements CommandLineRunner {
     CompanyService companyService;
 
     @Override
-    public void run(String... args) throws Exception {
-        System.out.println(companyService.findAll().size());
+    public void run(String... args){
     }
 }
