@@ -169,7 +169,23 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 ```
 
 
-### Update Company.
+### Get list of Companies
+
+#### Request
+`GET /api/company/all`
+  
+    curl --request GET --url http://localhost:8080/api/company/all --header 'Content-Type: application/json' 
+
+
+### Find a Company
+
+#### Request
+`GET /api/company/{company_id}`
+  
+    curl --request GET --url http://localhost:8080/api/company/1 --header 'Content-Type: application/json' 
+
+
+### Update Company .
 
 #### Request
 
@@ -185,14 +201,13 @@ The task is to implement Rest-API for the electric vehicle charging station mana
       curl --request POST --url http://localhost:8080/api/company/update/3 --header 'Content-Type: application/json' --data '{"name": "Company C","parentId":2,"stations": [{"name": "Station C1","latitude": 40.179553515829,"longitude": 44.50602072514},{"name": "Station C2","latitude": 40.176787750697,"longitude": 44.506651828385},{"name": "Station C23","latitude": 40.173548750850095,"longitude": 44.50640176860866}]}'
 
 
-#### Response
-    
-
-
 ### Delete a Company.
 
 #### Request
+  
+`DELETE /api/station/delete/{company_id}`
 
-#### Response
+    curl --request DELETE   --url http://localhost:8080/api/company/delete/3
+
 
 
