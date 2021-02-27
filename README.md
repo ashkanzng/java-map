@@ -1,12 +1,25 @@
 ## Task Description
+
+------
 The task is to implement Rest-API for the electric vehicle charging station management system.
+
+# Crossref REST API
+
+- Crossref REST API
+    - [Requirement](#Requirement)
+    - [Create Company](#preamble)
+    - [Create Company](#preamble)
+    - [Update Company](#meta)
+    - [Delete Company](#meta)
+    - [Get Company](#meta)
+
 
 ### Requirement
 * java 8+
 
 ### Installation  
 
-------
+======  
 
 #### Option 1
 - Clone the repo
