@@ -1,6 +1,5 @@
 ## Task Description
 
-------
 The task is to implement Rest-API for the electric vehicle charging station management system.
 
 # Crossref REST API
@@ -19,8 +18,6 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 ### Installation  
 
-======  
-
 #### Option 1
 - Clone the repo
    ```sh
@@ -38,9 +35,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 
 ### CRUD Api Usage.
-
-------  
-
+ 
 
 - Create company with stations
 ```JS
