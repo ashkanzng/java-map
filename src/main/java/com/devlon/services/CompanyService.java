@@ -5,6 +5,9 @@ import com.devlon.models.Station;
 import com.devlon.repositories.CompanyRepository;
 import com.devlon.repositories.StationRepository;
 import com.devlon.transactionObjects.CompanyT;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
@@ -37,10 +40,11 @@ public class CompanyService {
         Company existingCompany = companyRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("Company not found"));
         if (company.getStations() != null && company.getStations().size() > 0) {
             stationRepository.deleteAll(existingCompany.getStations());
+            existingCompany.setStations(company.getStations());
         }
-        company.setCurrentId(existingCompany.getId());
-        company.setCreated_at(existingCompany.getCreated_at());
-        companyRepository.save(company);
+        if (company.getName() != null) existingCompany.setName(company.getName());
+        if (company.getParentId() != null) existingCompany.setParentId(company.getParentId());
+        companyRepository.save(existingCompany);
         return existingCompany;
     }
 
@@ -65,7 +69,7 @@ public class CompanyService {
 
     // Recursive function to find all children of companies
     void findChild(Company company, CompanyT companyTransactionObject, Set<Station> stations, List<Integer> companyIdes) {
-        List<Company> children = companyRepository.findByParentId(company.getId());
+        List<Company> children = companyRepository.findAllByParentId(company.getId());
         for (Company child : children) {
             if (!companyIdes.contains(child.getId())) {
                 companyIdes.add(child.getId());

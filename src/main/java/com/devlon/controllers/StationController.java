@@ -60,11 +60,6 @@ public class StationController {
                 lat2 = 35.7431074438013 , lon2 = 51.30782639141293;
         int R = 6_371;
 
-//        BigDecimal lat1 = new BigDecimal("35.746599274497235");
-//        BigDecimal lat2 = new BigDecimal("35.7431074438013");
-//        BigDecimal lon1 = new BigDecimal("51.30860423202725");
-//        BigDecimal lon2 = new BigDecimal("51.30782639141293");
-
         double dis = Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2)) * R;
         System.out.println(dis);
     }

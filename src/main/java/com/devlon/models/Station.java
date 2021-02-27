@@ -26,12 +26,12 @@ public class Station {
 
     @Getter
     @Setter
-    @Column(name = "latitude", columnDefinition = "Decimal(10,12)")
+    @Column(name = "latitude", columnDefinition = "Decimal(20,12)")
     private Double latitude;
 
     @Getter
     @Setter
-    @Column(name = "longitude", columnDefinition = "Decimal(10,12)")
+    @Column(name = "longitude", columnDefinition = "Decimal(20,12)")
     private Double longitude;
 
     @JsonIgnore
