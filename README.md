@@ -244,7 +244,7 @@ Including all the children stations in the tree, for the given *company_id* .
 `GET /api/station/all`
 
 
-### Find all station
+### Find all stations
 #### Request
 
 `GET /api/station/find?lat={lat}&lon={lon}&rad={rad}`
