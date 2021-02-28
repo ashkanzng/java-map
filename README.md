@@ -4,13 +4,15 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 ## Crossref REST API
 
+- Quick Start
+  - [Requirement](#requirement)
+  - [Installation](#install)
+  
 - Company API
-    - [Requirement](#requirement)
-    - [Installation](#install)
     - [Create Company](#create-a-new-company)
-    - [Get Company](#get-company)
+    - [Get Company (include children stations)](#get-company)
     - [Get list of Companies](#Get-list-of-Companies)
-    - [Find a Company](#Find-a-Company)
+    - [Find a Company (singel company object)](#Find-a-Company)
     - [Update Company](#update-company)
     - [Delete Company](#delete-company)
 - Station API
@@ -42,9 +44,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 `POST /api/company/add`
 
-    curl --request POST --url http://localhost:8080/api/company/add --header 'Content-Type: application/json' 
-    --data '{"name":"Company A","parentId": null,
-    "stations": [{"name":"Station A1","latitude":40.18490133093378 , "longitude" :44.51706974521536},{"name":"Station A2","latitude":40.18211902611194 , "longitude" :44.521060034562424}]}'
+    curl --request POST --url http://localhost:8080/api/company/add --header 'Content-Type: application/json' --data '{"name":"Company A","parentId": null,"stations": [{"name":"Station A1","latitude":40.18490133093378 , "longitude" :44.51706974521536},{"name":"Station A2","latitude":40.18211902611194 , "longitude" :44.521060034562424}]}'
 
 #### Response
 ```JS
@@ -207,15 +207,14 @@ Including all the children stations in the tree, for the given *company_id* .
 
 `POST /api/company/update/{company_id}`
 
-      curl --request POST --url http://localhost:8080/api/company/update/3 --header 'Content-Type: application/json' 
-    --data '{"name": "Company C","parentId":2,"stations": [{"name": "Station C1","latitude": 40.179553515829,"longitude": 44.50602072514},{"name": "Station C2","latitude": 40.176787750697,"longitude": 44.506651828385},{"name": "Station C23","latitude": 40.173548750850095,"longitude": 44.50640176860866}]}'
+      curl --request POST --url http://localhost:8080/api/company/update/3 --header 'Content-Type: application/json' --data '{"name": "Company C","parentId":2,"stations": [{"name": "Station C1","latitude": 40.179553515829,"longitude": 44.50602072514},{"name": "Station C2","latitude": 40.176787750697,"longitude": 44.506651828385},{"name": "Station C23","latitude": 40.173548750850095,"longitude": 44.50640176860866}]}'
 
 
 ### Delete Company
 
 #### Request
   
-`DELETE /api/station/delete/{company_id}`
+`DELETE /api/company/delete/{company_id}`
 
     curl --request DELETE   --url http://localhost:8080/api/company/delete/3
 
@@ -225,7 +224,7 @@ Including all the children stations in the tree, for the given *company_id* .
 #### Request
 `POST /api/station/add/{company_id}`
 
-    curl --request POST  --url http://localhost:8080/api/station/add/2 --header 'Content-Type: application/json' --data '{"name":"Station B2","latitude": 40.173548750850095,"longitude":44.50900953485069}'
+    curl --request POST --url http://localhost:8080/api/station/add/2 --header 'Content-Type: application/json' --data '{"name":"Station B2","latitude": 40.173548750850095,"longitude":44.50900953485069}'
 
 #### Response
 ```JS
@@ -248,10 +247,11 @@ Including all the children stations in the tree, for the given *company_id* .
 #### Request
 `POST /api/station/update/{station_id}`
 
-      curl --request POST --url http://localhost:8080/api/station/update/67 --header 'Content-Type: application/json' 
-      --data '{"name": "Gas Station","latitude": 40.17949171,"longitude": 44.81391699}'
+      curl --request POST --url http://localhost:8080/api/station/update/67 --header 'Content-Type: application/json' --data '{"name": "Gas Station","latitude": 40.17949171,"longitude": 44.81391699}'
 
 ### Delete Station
 
 #### Request
+`DELETE /api/station/delete/{station_id}`
 
+    curl --request DELETE --url http://localhost:8080/api/station/delete/3
