@@ -40,7 +40,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
         2. java -jar xxx.jar
 
 
-### Demo of home page:
+### Demo of home page http://localhost:8080:
 ![Map of stations](https://github.com/ashkanzng/virta-task/blob/master/src/main/resources/static/imgs/mapbox.PNG "Map of stations")
 
 
