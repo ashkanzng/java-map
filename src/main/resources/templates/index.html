@@ -28,21 +28,16 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-8"><div class="map" style="width: 100%;height: 600px" id="mapid" onload="mapBox()" ></div></div>
-            <div class="col-lg-4">
-                <form action="/api/station/nearest_stations" method="get">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Lat / Long / Raduis</span>
-                        </div>
-                        <input type="text" name="lat" class="form-control" placeholder="35.75688....">
-                        <input type="text" name="lon" class="form-control" placeholder="51.28217....">
-                        <input type="text" name="rad" class="form-control" placeholder="5">
-                    </div>
-                    <b/>
-                    <button type="submit" class="btn btn-success">Find Nearest Stations</button>
-                </form>
+            <div class="col-lg-12">
+                <h3>Click on map to get all stations close to clicked point</h3>
             </div>
+            <div class="col-lg-12">
+                <h5>Click on marker to see station name</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9"><div class="map" style="width: 100%;height: 600px" id="mapid" onload="mapBox()" ></div></div>
+            <div class="col-lg-3" ><div id="result"></div></div>
         </div>
     </div>
 
@@ -59,9 +54,10 @@
                 // style: 'mapbox://styles/mapbox/outdoors-v11',
                 // style: 'mapbox://styles/mapbox/navigation-preview-day-v4',
                 center: [44.51322733748676,40.177935945724705],
-                zoom: 12
+                zoom: 13
             });
             map.addControl(new mapboxgl.NavigationControl());
+            map.addControl(new mapboxgl.FullscreenControl());
         }
 
         function addMarker(){
@@ -72,7 +68,7 @@
                         new mapboxgl.Marker({color: 'red',scale:0.5})
                             .setLngLat([station.longitude,station.latitude])
                             .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                                .setHTML('<b><b><h5>' + station.name + '</h5><p> Company:' + station.companyName + '</p>'))
+                                .setHTML('<br></b><p>' + station.name + '</p>'))
                             .addTo(map);
                     })
                 })
@@ -81,9 +77,18 @@
         function getLatLon(){
             map.on('click', function (e) {
                 console.log(e.lngLat)
+
+                fetch('/api/station/find?lat='+e.lngLat.lat+'&lon='+e.lngLat.lng+'&rad=10').then(response => response.json()).then(data =>{
+                    let table = '<table>';
+                    data.forEach(s =>{
+                        console.log(s)
+                        table += '<tr><td>' + s.name + '</td><td>' + s.distance + ' km</td></tr>';
+                    })
+                    table += '</table>';
+                    document.getElementById('result').innerHTML = table;
+                })
             });
         }
-
         mapBox();
         addMarker();
         getLatLon();

@@ -39,6 +39,11 @@ The task is to implement Rest-API for the electric vehicle charging station mana
         1. Download jar file and run the app
         2. java -jar xxx.jar
 
+
+### Demo of home page:
+![Map of stations](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Map of stations")
+
+
 ### Create a new company
 
 #### Request
