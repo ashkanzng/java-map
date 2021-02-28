@@ -41,7 +41,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
 
 ### Demo of home page:
-![Map of stations](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Map of stations")
+![Map of stations](https://github.com/ashkanzng/virta-task/blob/master/src/main/resources/static/imgs/mapbox.PNG "Map of stations")
 
 
 ### Create a new company
