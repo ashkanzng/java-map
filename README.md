@@ -249,9 +249,52 @@ Including all the children stations in the tree, for the given *company_id* .
 
 `GET /api/station/find?lat={lat}&lon={lon}&rad={rad}`
 
+    curl --request GET --url 'http://localhost:8080/api/station/find?lat=40.18341857687639&lon=44.513950912512826&rad=2' --header 'Content-Type: application/x-www-form-urlencoded'
 #### Response
-
-
+```JS
+  [
+    {
+      "id": 1,
+      "name": "Station A1",
+      "distance": 0.312
+    },
+    {
+      "id": 2,
+      "name": "Station A2",
+      "distance": 0.621
+    },
+    {
+      "id": 4,
+      "name": "Station B2",
+      "distance": 0.689
+    },
+    {
+      "id": 40,
+      "name": "Station C1",
+      "distance": 0.799
+    },
+    {
+      "id": 42,
+      "name": "Station C2",
+      "distance": 0.963
+    },
+    {
+      "id": 65,
+      "name": "Station B3",
+      "distance": 1.178
+    },
+    {
+      "id": 41,
+      "name": "Station C23",
+      "distance": 1.271
+    },
+    {
+      "id": 67,
+      "name": "Station B4",
+      "distance": 1.383
+    }
+  ]
+```
 
 
 ### Update Station
