@@ -18,7 +18,7 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 - Station API
     - [Add Station](#add-station)
     - [Get list of Stations](#Get-list-of-stations)
-    - [Find all stations Within the radius of n kilometers by distance](#find-all-stations)
+    - [Find all stations Within the radius of n kilometers by distance](#find-all-stations-close-to-givent-point(lat,lan,rad))
     - [Update Station](#update-station)
     - [Delete Station](#delete-station)
 
@@ -244,7 +244,7 @@ Including all the children stations in the tree, for the given *company_id* .
 `GET /api/station/all`
 
 
-### Find all stations
+### Find all stations close to givent point(lat,lan,rad)
 #### Request
 
 `GET /api/station/find?lat={lat}&lon={lon}&rad={rad}`
