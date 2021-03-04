@@ -8,10 +8,10 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.devlon</groupId>
-	<artifactId>devlon</artifactId>
+	<groupId>com.geo</groupId>
+	<artifactId>geo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>devlon</name>
+	<name>geo</name>
 	<description>Virta task 1</description>
 	<properties>
 		<java.version>11</java.version>
