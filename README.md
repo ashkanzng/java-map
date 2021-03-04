@@ -36,8 +36,8 @@ The task is to implement Rest-API for the electric vehicle charging station mana
 
     Option 2 
 
-        1. unzip devlon-task.zip => db.mv.db  devlon-Task.jar  
-        2. java -jar devlon-Task.jar 
+        1. unzip devlon-task.zip => db.mv.db  geo-SNAPSHOT.zip  
+        2. java -jar geo-SNAPSHOT.jar 
 
 
 ### Demo of home page http://localhost:8080:
