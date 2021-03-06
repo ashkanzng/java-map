@@ -12,7 +12,7 @@
 	<artifactId>geo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>geo</name>
-	<description>Virta task 1</description>
+	<description>Finding Nearest Station of point</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
