@@ -54,10 +54,6 @@ public class StationController {
         }
     }
 
-    /**
-     * int R = 6_371;
-     * double dis = Math.acos(Math.sin(Math.toRadians(station.getLatitude())) * Math.sin(Math.toRadians(lat)) + Math.cos(Math.toRadians(station.getLatitude())) * Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(station.getLongitude()) - Math.toRadians(lon))) * R;
-     */
     @GetMapping(value = "/find")
     public ResponseEntity<Object> nearestStation(@RequestParam(name = "lat") double lat, @RequestParam(name = "lon") double lon, @RequestParam(name = "rad") double rad) {
         try{
